@@ -1,0 +1,64 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/cards.css' %}" />
+<div class="text-gray-600 font-body" >
+  <header id="hd">
+    <h1>Recipe Wonderland</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="srch">Search Recipes</a>
+      <a href="add">Submit Recipe</a>
+      <a href="cds">Recipes</a>
+      <a href="#tutorial">Cooking Tutorial</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </header>
+  <main class="bg-gray-100 px-16 py-6 min-h-screen" style="background-color: rgb(233, 213, 191);">
+    <header>
+      <h2 class="text-gray-700 text-6xl font-semibold">Recipes</h2>
+      <h3 class="text-2xl font-semibold">For Recipewonderworld</h3>
+    </header>
+    <div >
+      <h4 class="font-bold mt-12 pb-2 border-b border-gray-200">
+        Latest Recipes
+      </h4>
+      <div class="mt-8 grid lg:grid-cols-3 gap-10" >
+        {% for m in data %}
+       
+        <div class="card hover:shadow-lg">
+          
+          <img src="{{ m.pim.url }}" class="w-full h-32 sm:h-48 object-cover" />
+          <div class="p-4"> <!-- Added padding here -->
+            <div class="card__title" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;color: rgb(126, 28, 118);font-size: 30px;">{{ m.ttl }}</div>
+            <p class="card__text" style="font-family: Verdana, Geneva, Tahoma, sans-serif;color: rgb(72, 41, 19);">{{ m.ds }}</p>
+            <br><h3 style="color: brown;">Ingredients:</h3>
+            <p class="card__text">{{ m.lst }}</p>
+            <br><h3 style="color: brown;">Instructions:</h3>
+            <ol>
+              <li><p class="card__text">{{ m.in1 }}</p></li>
+              <li><p class="card__text">{{ m.in2 }}</p></li>
+              <li><p class="card__text">{{ m.in3 }}</p></li>
+            </ol>
+         
+          
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+  <style>
+   #hd{
+  background-color: #ff6f61;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+  </style>
+</div>

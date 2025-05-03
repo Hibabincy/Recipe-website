@@ -1,0 +1,86 @@
+
+{%load static%}
+<link rel="stylesheet" href="{%  static 'css/oneitem.css' %}"/>
+
+<header>
+    <h1>Recipe Wonderland</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="srch">Search Recipes</a>
+      <a href="add">Add Recipe</a>
+      <a href="cds">Recipes</a>
+      <a href="#tutorial">Cooking Tutorial</a>
+      <a href="#contact">Contact Us</a>
+    </nav>
+  </header>
+ 
+<main >
+    <a href="cds">All Recipes</a>
+    <br><h1>Search Recipies</h1><br>
+    
+
+        <div class="search-box">
+            <form method="POST">
+                {%csrf_token%}
+                <input type="text" name='rk' placeholder="Search for recipe by list...">
+                <button type="submit" > Search</button>
+            </form>
+        </div>
+
+    <table>
+        <thead>
+            <tr>
+              
+                <th style="text-align: left;margin-left: 50px";>Recipe Name</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>Lists</th>
+                <th  style="text-align: left;margin-left: 50px;">instructions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in recipe %}
+            <tr>
+               
+                <td >{{b.ttl}}  </td>
+                <td>{{b.pim.url}}</td>
+                <td >{{b.ds}}  </td>
+                <td >{{b.lst}} </td>
+                <td style="text-align: left;margin-left: 50px;" ><li>{{b.in1}} </li><li>{{b.in2}} </li><li>{{b.in3}} </li></td>
+                
+            </tr>
+            
+         {% endfor %}
+        </tbody>
+    </table>
+</form>
+
+<style>
+  body {
+    margin: 0; /* Removes default body margin */
+    background-color: antiquewhite;
+  }
+
+  header {
+    background-color: #ff6f61;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+</style>
+</main>

@@ -1,0 +1,262 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/item.css' %}" />
+    
+  </head>
+
+  <body>
+    <header id="hd">
+      <h1>Recipe Wonderland</h1>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="srch">Search Recipes</a>
+        <a href="add">Submit Recipe</a>
+        <a href="cds">Recipes</a>
+        <a href="#tutorial">Cooking Tutorial</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+    </header>
+    <section class="container">
+      <header>Add Recipe</header>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h3 style="color: rgb(247, 85, 101); font-size: 16px;">{{ msg }}</h3>
+
+        <div class="input-box">
+          <label>Recipe Name</label>
+          <input type="text" name="title" placeholder="Enter recipe name" required />
+        </div>
+
+        <div class="input-box">
+          <label>Description</label>
+          <textarea name="des" rows="2" placeholder="Short description" required></textarea>
+        </div>
+
+        <div class="input-box">
+          <label>Items Needed</label>
+          <textarea name="l1" rows="2" placeholder="Enter items" required></textarea>
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Instruction 1</label>
+            <input type="text" name="in1" placeholder="Instruction 1" required />
+          </div>
+          <div class="input-box">
+            <label>Instruction 2</label>
+            <input type="text" name="in2" placeholder="Instruction 2" required />
+          </div>
+          <div class="input-box">
+            <label>Instruction 3</label>
+            <input type="text" name="in3" placeholder="Instruction 3" required />
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label>Image</label>
+          <input type="file" name="im" required />
+        </div>
+
+        <button type="submit">Add</button>
+      </form>
+    </section>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  body {
+background-color: #efc884;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+padding: 0;
+padding-top: 160px;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+min-height: 100vh;
+}
+
+#hd {
+position: fixed;
+top: 0;
+width: 100%;
+background-color: #ff6f61;
+color: white;
+text-align: center;
+padding: 1.2em 0 0.8em 0;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+z-index: 1000;
+}
+
+#hd h1 {
+margin: 0;
+font-size: 2em;
+}
+
+#hd nav {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 15px;
+margin-top: 10px;
+}
+
+#hd nav a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+padding: 0.5em 1em;
+transition: background 0.3s, transform 0.2s;
+}
+
+#hd nav a:hover {
+background-color: #e85b50;
+border-radius: 5px;
+transform: scale(1.05);
+}
+
+.container {
+background: white;
+padding: 30px 25px;
+border-radius: 12px;
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+max-width: 600px;
+width: 100%;
+margin-bottom: 40px;
+}
+
+.container > header {
+font-size: 24px;
+font-weight: bold;
+color: #333;
+text-align: center;
+margin-bottom: 20px;
+}
+
+form {
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+.input-box {
+display: flex;
+flex-direction: column;
+}
+
+.input-box label {
+font-size: 15px;
+margin-bottom: 6px;
+font-weight: 600;
+color: #444;
+}
+
+.input-box input,
+.input-box textarea {
+padding: 10px;
+border: 1px solid #ccc;
+border-radius: 8px;
+font-size: 15px;
+background-color: #f9f9f9;
+transition: border-color 0.3s ease;
+}
+
+.input-box input:focus,
+.input-box textarea:focus {
+outline: none;
+border-color: #ff6f61;
+background-color: #fff;
+}
+
+textarea {
+resize: vertical;
+min-height: 60px;
+}
+
+.column {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+#hd {
+ background-color: #ff6f61;
+ color: white;
+ text-align: center;
+ padding: 1em 0;
+}
+
+nav {
+ display: flex;
+ justify-content: center;
+ flex-wrap: wrap;
+ margin-top: 10px;
+}
+
+button {
+background-color: #ff6f61;
+color: white;
+padding: 12px;
+border: none;
+border-radius: 8px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+background-color: #e75a50;
+transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+.container {
+ padding: 20px 15px;
+}
+
+#hd h1 {
+ font-size: 1.6em;
+}
+
+#hd nav {
+ flex-direction: column;
+ gap: 10px;
+}
+}
+
+ </style>
